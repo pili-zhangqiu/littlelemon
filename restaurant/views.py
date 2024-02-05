@@ -5,7 +5,6 @@ from .models import Menu
 
 
 
-# Create your views here.
 def home(request):
     return render(request, 'index.html')
 
@@ -21,4 +20,7 @@ def book(request):
     context = {'form':form}
     return render(request, 'book.html', context)
 
-# Add your code here to create new views
+def menu(request):
+    menu_data = Menu.objects.all()
+    main_data = {"menu":menu_data}
+    return render(request, 'menu.html', {"menu":main_data})
